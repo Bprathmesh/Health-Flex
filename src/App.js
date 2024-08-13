@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CommentForm from './CommentForm';
+import CommentList from './CommentList';
 
-function App() {
+const App = () => {
+  const [comments, setComments] = useState([]);
+
+  const handleCommentSubmit = (comment) => {
+    setComments([...comments, { ...comment, id: Date.now() }]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Comments App</h1>
+      <CommentForm onSubmit={handleCommentSubmit} />
+      <CommentList comments={comments} />
     </div>
   );
-}
+};
 
 export default App;
