@@ -6,6 +6,9 @@ const Comment = ({ comment, onReplySubmit, onVote, onEmojiClick, isReply = false
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showReplyForm, setShowReplyForm] = useState(false);
 
+  // Ensure comment.emojis is always an object
+  const emojis = comment.emojis || {};
+
   const handleUpvote = () => onVote(comment.id, 'upvotes', isReply, parentId);
   const handleDownvote = () => onVote(comment.id, 'downvotes', isReply, parentId);
 
@@ -74,9 +77,9 @@ const Comment = ({ comment, onReplySubmit, onVote, onEmojiClick, isReply = false
           ))}
         </div>
       )}
-      {Object.keys(comment.emojis).length > 0 && (
+      {Object.keys(emojis).length > 0 && (
         <div className="mt-2 flex flex-wrap gap-2">
-          {Object.entries(comment.emojis).map(([emoji, count]) => (
+          {Object.entries(emojis).map(([emoji, count]) => (
             <span key={emoji} className="text-xl">{emoji} {count}</span>
           ))}
         </div>
