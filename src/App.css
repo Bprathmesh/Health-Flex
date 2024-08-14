@@ -1,14 +1,26 @@
-.container {
+
+:root {
+    --bg-color: #1f2937;
+    --text-color: #ffffff;
+    --border-color: #4b5563;
+    --button-bg-color: #3b82f6;
+    --button-hover-color: #2563eb;
+    --input-focus-color: #3b82f6;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 16px;
-    background-color: #ffffff; /* White background for the main container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
   }
   
   .bg-gray-100 {
-    background-color: #f7f7f7;
+    background-color: #374151;
   }
   
   .text-xl {
@@ -44,15 +56,15 @@
   }
   
   .bg-blue-500 {
-    background-color: #3b82f6;
+    background-color: var(--button-bg-color);
   }
   
   .text-white {
-    color: #ffffff;
+    color: var(--text-color);
   }
   
   .hover\:bg-blue-600:hover {
-    background-color: #2563eb;
+    background-color: var(--button-hover-color);
   }
   
   .w-full {
@@ -64,7 +76,7 @@
   }
   
   .border {
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
   }
   
   .text-sm {
@@ -72,20 +84,20 @@
   }
   
   .text-gray-500 {
-    color: #6b7280;
+    color: var(--text-color);
   }
   
   input, textarea {
     border-radius: 4px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--border-color);
     padding: 0.5rem;
     width: 100%;
   }
   
   input:focus, textarea:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 1px #3b82f6;
+    border-color: var(--input-focus-color);
+    box-shadow: 0 0 0 1px var(--input-focus-color);
   }
   
   button {
@@ -100,15 +112,14 @@
   }
   
   button.bg-blue-500 {
-    background-color: #3b82f6;
-    color: #ffffff;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
   }
   
   button.bg-blue-500:hover {
-    background-color: #2563eb;
+    background-color: var(--button-hover-color);
   }
   
   button.text-gray-600:hover {
-    color: #3b82f6;
+    color: var(--button-bg-color);
   }
-  
