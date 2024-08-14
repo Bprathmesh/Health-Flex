@@ -1,0 +1,114 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #ffffff; /* White background for the main container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .bg-gray-100 {
+    background-color: #f7f7f7;
+  }
+  
+  .text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  
+  .ml-8 {
+    margin-left: 2rem;
+  }
+  
+  .bg-blue-500 {
+    background-color: #3b82f6;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .hover\:bg-blue-600:hover {
+    background-color: #2563eb;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .border {
+    border: 1px solid #e5e7eb;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-gray-500 {
+    color: #6b7280;
+  }
+  
+  input, textarea {
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+  }
+  
+  button {
+    border-radius: 4px;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  button.bg-blue-500 {
+    background-color: #3b82f6;
+    color: #ffffff;
+  }
+  
+  button.bg-blue-500:hover {
+    background-color: #2563eb;
+  }
+  
+  button.text-gray-600:hover {
+    color: #3b82f6;
+  }
+  

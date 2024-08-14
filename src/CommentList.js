@@ -1,17 +1,18 @@
 import React from 'react';
 import Comment from './Comment';
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments, onReplySubmit, onVote, onEmojiClick }) => {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Comments</h2>
-      {comments.length === 0 ? (
-        <p>No comments yet. Be the first to comment!</p>
-      ) : (
-        comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
-        ))
-      )}
+      {comments.map(comment => (
+        <Comment
+          key={comment.id}
+          comment={comment}
+          onReplySubmit={onReplySubmit}
+          onVote={onVote}
+          onEmojiClick={onEmojiClick}
+        />
+      ))}
     </div>
   );
 };
