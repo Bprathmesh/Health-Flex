@@ -6,7 +6,6 @@ const Comment = ({ comment, onReplySubmit, onVote, onEmojiClick, isReply = false
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showReplyForm, setShowReplyForm] = useState(false);
 
-  // Ensure comment.emojis is always an object
   const emojis = comment.emojis || {};
 
   const handleUpvote = () => onVote(comment.id, 'upvotes', isReply, parentId);
@@ -51,27 +50,27 @@ const Comment = ({ comment, onReplySubmit, onVote, onEmojiClick, isReply = false
       )}
       {showReplyForm && (
         <div className="mt-4">
-          <CommentForm 
-            parentId={comment.id} 
-            isReply={true} 
+          <CommentForm
+            parentId={comment.id}
+            isReply={true}
             onSubmit={(parentId, replyData) => {
               onReplySubmit(parentId, replyData);
               setShowReplyForm(false);
-            }} 
+            }}
           />
         </div>
       )}
       {comment.replies && comment.replies.length > 0 && (
         <div className="mt-4">
           {comment.replies.map(reply => (
-            <Comment 
-              key={reply.id} 
-              comment={reply} 
-              onReplySubmit={onReplySubmit} 
+            <Comment
+              key={reply.id}
+              comment={reply}
+              onReplySubmit={onReplySubmit}
               onVote={onVote}
-              onEmojiClick={onEmojiClick} 
-              isReply={true} 
-              parentId={comment.id} 
+              onEmojiClick={onEmojiClick}
+              isReply={true}
+              parentId={comment.id}
               level={level + 1} // Increase indentation level for replies
             />
           ))}

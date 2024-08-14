@@ -1,9 +1,10 @@
+// App.js
+
 import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import SearchBar from './SearchBar';
-import './App.css'; // or the path to your CSS file
-
+import './App.css'; // Ensure correct path
 
 const App = () => {
   const [comments, setComments] = useState([]);
@@ -20,18 +21,19 @@ const App = () => {
   }, [comments]);
 
   const handleCommentSubmit = (parentId, comment) => {
-    const newComment = { 
-      ...comment, 
-      id: Date.now(), 
-      upvotes: 0, 
-      downvotes: 0, 
-      replies: [] 
+    const newComment = {
+      ...comment,
+      id: Date.now(),
+      upvotes: 0,
+      downvotes: 0,
+      replies: [],
+      reactions: {} // Add reactions object
     };
 
     if (parentId === null) {
       setComments(prevComments => [...prevComments, newComment]);
     } else {
-      setComments(prevComments => prevComments.map(c => 
+      setComments(prevComments => prevComments.map(c =>
         c.id === parentId
           ? { ...c, replies: [...c.replies, newComment] }
           : c
@@ -40,7 +42,7 @@ const App = () => {
   };
 
   const handleVote = (id, type, isReply = false, parentId = null) => {
-    const updateVote = (comment) => 
+    const updateVote = (comment) =>
       comment.id === id ? { ...comment, [type]: comment[type] + 1 } : comment;
 
     if (isReply && parentId) {
@@ -54,9 +56,28 @@ const App = () => {
     }
   };
 
-  const handleEmojiClick = (emoji, commentId, isReply, parentId) => {
+  const handleEmojiClick = (emoji, commentId, isReply = false, parentId = null) => {
     console.log(`Emoji ${emoji.emoji} clicked for comment ${commentId}`);
-    // Implement emoji reaction logic here
+
+    const updateReactions = (comment) => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          reactions: {
+            ...comment.reactions,
+            [emoji.emoji]: (comment.reactions[emoji.emoji] || 0) + 1
+          }
+        };
+      } else if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map(updateReactions)
+        };
+      }
+      return comment;
+    };
+
+    setComments(prevComments => prevComments.map(updateReactions));
   };
 
   const filteredComments = comments
@@ -77,10 +98,10 @@ const App = () => {
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Comments App</h1>
       <SearchBar onSearch={setSearchTerm} onSort={setSortOption} />
-      <CommentForm onSubmit={(comment) => handleCommentSubmit(null, comment)} />
-      <CommentList 
-        comments={filteredComments} 
-        onReplySubmit={handleCommentSubmit} 
+      <CommentForm onSubmit={(parentId, comment) => handleCommentSubmit(parentId, comment)} />
+      <CommentList
+        comments={filteredComments}
+        onReplySubmit={handleCommentSubmit}
         onVote={handleVote}
         onEmojiClick={handleEmojiClick}
       />
